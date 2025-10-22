@@ -1,0 +1,24 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+
+{{ if $data.homepage.section_cta }}
+{{ with $data.homepage.section_cta }}
+<section class="section section--cta">
+    <div class="container">
+
+        <div class="cta">
+            <div>
+                <div class="timer-wrap">
+                    <h4>{{ .note | markdownify }}</h4>
+                    {{- partial "_timer.html" . -}}
+                </div>
+            </div>
+            <div>&nbsp;</div>
+            <div class="cta-label">
+                <img src="./images/img2.webp" alt="" class="cta-img">
+                <h2 class="cta-title">{{ .title | markdownify }}</h2>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+{{ end }}

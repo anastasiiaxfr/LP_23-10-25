@@ -1,0 +1,238 @@
+.features-table
+    margin-top: 5em
+    +maw($lg)
+        margin-top: 0
+    .timer-item
+        background-color: $color_4
+       
+        
+    &-header
+        display: grid
+        grid-template-columns: 1.5fr 0.75fr 0.85fr 0.75fr
+        h2
+            font-weight: 400
+            strong
+                font-weight: 700
+                color: $black
+        h3
+            +ft(28, 28, 700)
+            margin: 0
+            margin-top: 1em
+        p
+            +ft(10, 10*1.4, 600)
+    &-footer
+        display: grid
+        grid-template-columns: 1.5fr 0.75fr 0.85fr 0.75fr
+        align-items: center
+        padding: 1em
+        +maw($md)
+            grid-template-columns: 1fr auto auto auto
+            align-items: start
+            gap: $gap3 0
+            &>div:first-child
+                grid-column: 1/-1
+                justify-content: center
+                align-items: center
+                text-align: center 
+                .timer
+                    margin-left: auto
+                    margin-right: auto
+        +maw($sm)
+            grid-template-columns: 1fr
+            gap: $gap3
+    &-row
+        display: grid
+        grid-template-columns: 1.5fr 0.75fr 0.85fr 0.75fr
+        align-items: stretch
+        border-radius: 10px
+        padding: 0
+        &:nth-child(odd)
+            background-color: $light
+            +maw($sm)
+                background-color: transparent
+        &:first-child
+            border-radius: 10px 0 10px 10px
+        +maw($sm)
+            grid-template-columns: 1fr
+    &-col
+        text-align: center
+        padding: 1em
+        display: flex
+        flex-direction: column
+        justify-content: center
+        +maw($sm)
+            border: 1px solid $light
+            display: grid
+            grid-template-columns: 1fr 1fr
+       
+        &:nth-child(2)
+            svg
+                color: $color_6
+        &:nth-child(3)
+            background: rgba($main, 0.2)
+            svg
+                color: $main
+                +sz(40px, 40px)
+            +maw($lg)
+                svg
+                    +sz(24px, 24px)
+            +maw($sm)
+                background: transparent
+        &:nth-child(4)
+            svg
+                color: $color_7
+        p
+            margin: 0
+            &:first-child
+                font-weight: bold
+                margin-bottom: 4px
+                +miw($lg)
+                    display: none
+        &-heading
+            +ft(16, 16*1.4, 500)
+            padding: 0 1em
+            align-self: center
+            +flex(flex, center, start, nowrap)
+            gap: $gap2
+            button
+                border: none
+                background: none
+                padding: 0
+                +flex(flex, center, center, nowrap)
+            +maw($sm)
+                padding: 1em
+                background-color: $light
+        +maw($sm)
+            text-align: left
+    &-badge
+        position: absolute
+        inset: 0
+        bottom: auto
+        margin: auto
+        +flex(inline-flex, center, center, nowrap)
+        padding: 8px
+        max-width: 80px
+        text-transform: uppercase
+        +ft(14, 14, 700)
+        border-radius: 16pc
+        background-color: $color_6
+        transform: translateY(-50%)
+    &-mark
+        position: absolute
+        inset: 0
+        padding: 0.5em
+        text-align: center
+        background-color: $color_1
+        transform: rotate(-45deg) translate(-28%, -90%)
+        +ft(14, 14, 700)
+        height: 3em
+        display: flex
+        align-items: center
+        justify-content: center
+    &-info
+        overflow: hidden
+        &:nth-child(2)
+            color: $color_6
+            border-color: $color_6
+            .btn
+                background-color: $color_6
+            +maw($sm)
+                .features-table-info-header
+                    background-color: $color_6
+        &:nth-child(3)
+            color: $main
+        &:nth-child(4)
+            color: $color_7
+            border-color: $color_7
+            .btn
+                background-color: $color_7
+            +maw($sm)
+                .features-table-info-header
+                    background-color: $color_7
+        &-body
+            display: flex
+            flex-direction: column
+            gap: $gap1
+            justify-content: center
+            align-items: center
+            text-align: center
+            font-weight: 500
+            padding: 1em
+        &-header
+            text-align: center
+            font-weight: bold
+            font-size: 2em
+            padding: 0.5em
+            +miw($md)
+                display: none
+        .btn
+            min-width: 0
+        big
+            font-weight: 800
+            line-height: 1
+            font-size: 3em
+        p
+            margin-bottom: -0.25em
+        del
+            +ft(20, 20, 500)
+            display: block
+            margin-bottom: -1em
+            color: $black
+        +maw($lg)
+            big
+                font-size: 2em
+        +maw($md)
+            align-items: start
+        +maw($sm)
+            border-radius: 10px
+            border: 2px solid $main
+            &-header
+                background-color: $main
+                color: $white
+
+    &-plan
+        position: relative
+        background-color: $light
+        border-radius: 20px
+        text-align: center
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        align-items: center
+        &-content
+            position: relative
+            overflow: hidden
+            padding: 24px
+            flex: 1
+            +sz(100%, 100%)
+            display: flex
+            flex-direction: column
+            justify-content: space-between
+        &:nth-of-type(2)
+            border-radius: 20px 0 0 0
+        &:nth-of-type(3)
+            +theme(main)
+            border-radius: 20px 20px 0 0
+            margin-top: -3em
+            h3
+                +ft(80, 80, 900)
+                margin: 0
+            .features-table-plan-content
+                padding-top: 3.5em
+            .features-table-badge
+                background-color: $color_1
+                color: $white
+                left: auto
+                border-radius: 16px 16px 0 0
+                z-index: -2
+                transform: translateY(calc(-100% + 1.5em))
+                padding-bottom: 2em
+        &:nth-of-type(4)
+            border-radius: 0 20px 0 0
+    +maw($lg)
+        &-plan
+            display: none
+        &-header
+            grid-template-columns: 1fr
+  
+     

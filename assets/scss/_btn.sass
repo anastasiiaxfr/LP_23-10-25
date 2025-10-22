@@ -1,0 +1,131 @@
+.btn
+	+flex(inline-flex, center, center, nowrap)
+	height: 50px
+	min-width: 200px
+	padding: 8px 2em
+	border-radius: 8px
+	border: 0px solid transparent
+	+theme(main)
+	color: $white
+	background-repeat: no-repeat
+	background-size: cover
+	text-align: center
+	text-decoration: none !important
+	+ft(16, 16, 700, $ffHeading)
+	transition: $trs
+	cursor: pointer
+	b
+		position: relative	
+		overflow: hidden
+		font-weight: inherit
+		span
+			display: block
+			transition: all .25s linear
+			&:last-child
+				position: absolute
+				top: 100%
+	&::after
+		display: none
+	&:hover, &:active, &:focus
+		outline: none
+		box-shadow: none
+		color: $white
+		span
+			&:first-child
+				transform: translateY(-165%)
+			&:last-child
+				transform: translate(0)
+				top: 0
+	.hero &
+		&:hover, &:active, &:focus-visible
+			+theme(white)
+
+	&s
+		+flex(inline-flex, center, center, nowrap)
+		gap: $gap2
+	&_top
+		+ps(fixed, (r, 16px), (b, 16px))
+		z-index: 1000
+		+sz(46px, 46px)
+		+theme(main)
+		border-radius: $brs
+		border: none
+
+	&-bd
+		@extend .btn
+		min-width: 272px
+		height: 56px
+		border: 2px solid $white
+		border-radius: 10px
+		background-color: transparent
+		color: $white
+		
+		&:hover, &:active, &:focus
+			+theme(white)
+	+maw($xs)
+		font-size: 16px
+
+
+.contacts
+	display: grid
+	gap: $gap3
+	address	
+		font-style: normal
+	a, address
+		transition: $trs
+		+ft(13, 13*1.3, 400)
+		&:hover
+			color: $main 
+
+.chips
+	+flex(flex, center, start, wrap)
+	gap: $gap2
+.chip
+	+flex(flex, center, center, wrap)
+	gap: $gap2
+	background: none
+	border: none
+	color: inherit
+	+ft(16, 21, 600)
+	&-icon
+		+flex(flex, center, center, nowrap)
+		+sz(40px, 40px)
+		padding: 10px
+		border-radius: 50%
+		background-color: rgba($white, 0.2)
+	&--bd
+		+flex(flex, center, center, nowrap)
+		gap: $gap1
+		background: none
+		border: 1px solid rgba($black, 0.2)
+		border-radius: 16pc
+		padding: $gap1 $gap2
+		+ft(16, 21, 500)
+		transition: $trs
+		color: inherit
+		svg
+			color: $main
+		&:hover
+			border-color: $main
+	+maw($xs)
+		gap: $gap1
+		+ft(12, 12*1.4, 600)
+		&-icon
+			+sz(28px, 28px)
+			padding: 4px
+		&--bd
+			+ft(12, 21, 500)
+			.icon
+				+sz(16px, 16px)
+
+.soc
+	display: flex
+	gap: $gap2
+	align-items: center
+	a
+		display: flex
+		align-items: center
+		justify-content: center
+		transition: $trs
+		&:hover, &:active, &:focus
+			color: $main

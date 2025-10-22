@@ -1,0 +1,56 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+
+
+{{ if $data.homepage.hero }}
+{{ with $data.homepage.hero }}
+
+<section class="section hero">
+    <div class="container">
+        <div class="hero-row">
+            <div>
+                <div class="chips">
+                    {{ range .chips }}
+                    <button class="chip">
+                        <span class="chip-icon">
+                            <svg class="icon" width="16" height="16">
+                                <use xlink:href="#{{.icon}}"></use>
+                            </svg>
+                        </span>
+                        <span>{{ .title }}</span>
+                    </button>
+                    {{ end }}
+                </div>
+                <div class="heading">
+                    <h1>
+                        {{ .title_1 }}
+                    </h1>
+                    <p>{{ .subtitle | markdownify}}</p>
+                    <h2>{{ .title_2 }}</h2>
+                </div>
+                <p class="hero-subtitle">
+                    {{ .description | markdownify }}
+                </p>
+
+                <a class="btn" href="#features" data-toggle="popup">
+                    <b>
+                        <span>{{ .btn }}</span>
+                        <span>{{.btn}}</span>
+                    </b>
+                </a>
+
+            </div>
+            <div>
+                <img src='{{ "./images/img1.webp" | relURL}}' alt=""  fetchpriority="high" width="701" height="701">
+            </div>
+        </div>
+
+    </div>
+    <div class="container">
+        <h2 class="text-center">
+            {{ .heading | markdownify}}
+        </h2>
+    </div>
+</section>
+
+{{ end }}
+{{ end }}

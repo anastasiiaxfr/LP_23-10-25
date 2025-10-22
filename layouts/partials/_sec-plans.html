@@ -1,0 +1,48 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+
+{{ if $data.homepage.section_plans }}
+{{ with $data.homepage.section_plans }}
+<section class="section section--plans">
+    <div class="container">
+        <h2 class="text-center">
+            {{ .title | markdownify }}
+        </h2>
+
+        <div class="plans">
+            {{ range .plans }}
+            <div class="plan">
+                <div class="plan-card">
+                    <div class="plan-header">
+                        {{ .type }}
+                    </div>
+                    <div class="plan-body">
+                        {{ if .benefits }}
+                        <h3>{{.benefits.title}}</h3>
+
+                        <ul class="plan-list--mark">
+                            {{ range .benefits.list }}
+                            <li>{{ .item }}</li>
+                            {{ end }}
+                        </ul>
+                        <hr class="plan-divider">
+                        {{ end }}
+                        <h3 class="plan-title">
+                            {{ .features.title }}
+                        </h3>
+                        <ul class="plan-list">
+                            {{ range .features.list }}
+                            <li>{{ .item }}</li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                </div>
+                {{ range .description }}
+                <p class="plan-description">{{.paragraph}}</p>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}
+{{ end }}

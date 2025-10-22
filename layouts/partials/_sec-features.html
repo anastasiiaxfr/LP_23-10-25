@@ -1,0 +1,110 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+
+{{ if $data.homepage.section_features }}
+{{ with $data.homepage.section_features }}
+<section class="section section--features" id="features">
+    <div class="container">
+        <div class="features-table">
+            <div class="features-table-header">
+                <div>
+                    <h2>{{ .title | markdownify }}</h2>
+                </div>
+                {{ range .plans}}
+                <div class="features-table-plan">
+
+                    <div class="features-table-badge">
+                        + Bonus
+                    </div>
+                    <div class="features-table-plan-content">
+                        {{ if .top }}
+                        <div class="features-table-mark">
+                            {{ .top }}
+                        </div>
+                        {{ end }}
+                        <h3>{{ .type }}</h3>
+                        <p>
+                            {{ .label }}
+                        </p>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+            <div class="features-table-body">
+
+                {{ range .features }}
+                <div class="features-table-row">
+                    <div class="features-table-col-heading">
+                        {{ .title }}
+                        <button data-tippy-content="<ul>
+                                {{ range .tooltip.list }}
+                                    <li>{{ .item | html }}</li>
+                                {{ end }}
+                                </ul>
+                                " class="tooltip-btn" title="info">
+                            <svg class="icon" width="16" height="16">
+                                <use xlink:href="#i6"></use>
+                            </svg>
+                        </button>
+                    </div>
+                    {{ range .plans }}
+                    <div class="features-table-col">
+                        <p class="">{{ .plan.type }}</p>
+                        <p>
+                            {{ if eq .value true }}
+                            <svg class="icon" width="24" height="24">
+                                <use xlink:href="#check1"></use>
+                            </svg>
+                            {{ else if eq .value false }}
+                            –
+                            {{ else }}
+                            {{ .value }}
+                            {{ end }}
+                        </p>
+                    </div>
+                    {{ end }}
+                </div>
+                {{ end }}
+
+            </div>
+            <div class="features-table-footer">
+
+                <div>
+                    <p>{{ .note | markdownify}}</p>
+                    {{- partial "_timer.html" . -}}
+                </div>
+                {{ range .plans }}
+                <div class="features-table-info">
+                    <div class="features-table-info-header">
+                        {{ .type }}
+                    </div>
+                    <div class="features-table-info-body">
+                        <del>{{ .ol_price }} <span>{{ .cur }}</span></del>
+                        <p><big id="{{.type | lower}}">{{ .new_price }}</big> <span>{{ .cur }}</span></p>
+                        <a class="btn" href="#" target="_blank" data-toggle="popup">
+                            <b>
+                                <span>Залишити заявку</span>
+                                <span>Залишити заявку</span>
+                            </b>
+                        </a>
+                        <small>{{ .places | markdownify }}</small>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        tippy('.tooltip-btn', {
+            allowHTML: true,
+            interactive: true,
+            theme: 'light-border',
+            content(reference) {
+                return reference.getAttribute('data-tippy-content');
+            }
+        });
+    });
+</script>
+{{ end }}
+{{ end }}
