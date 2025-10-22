@@ -1,0 +1,155 @@
+baseURL = "/"
+# canonifyURLs = true
+defaultContentLanguage = "uk"
+# disableLanguages = ["ru"]
+paginate = "6"
+relativeURLs = true
+summaryLength = "50"
+title = "Genius.Space"
+
+
+[Languages.uk]
+contentDir = "content/uk"
+home = "Home"
+languageCode = "uk"
+languageName = "UK"
+weight = 1
+
+
+
+[outputs]
+home = ["HTML"]
+
+
+[params]
+CIO_site_id = "XXX"
+GTM = "GTM-WHBQ3BV"
+develop = ""
+author = "Genius.Space"
+
+logo = "./images/logo.svg"
+logo_dark = "./images/logo.svg"
+logo_description = "Genius.Space"
+
+site_name = "Genius.Space"
+site_url = "#"
+
+description = "Опануйте трендовий напрямок, збільште ефективність у своїй роботі та почніть заробляти набагато більше за допомогою штучного інтелекту"
+
+# search
+search = false
+
+# soc
+
+#[[params.plugins.js]]
+#link = "plugins/js/jquery.min.js"
+#[[params.plugins.js]]
+#link = "plugins/js/slick.js"
+
+
+[params.preloader]
+enable = true
+preloader = ""
+
+
+############################# socials #################################
+[[params.soc]]
+title = "facebook"
+icon = "soc1"
+link = "#"
+[[params.soc]]
+title = "youtube"
+icon = "soc2"
+link = "#"
+[[params.soc]]
+title="telegram"
+icon = "soc3"
+link = "#"
+[[params.soc]]
+title="instagram"
+icon = "soc4"
+link = "#"
+
+
+############################# contacts #################################
+[[params.contact]]
+title = "Address"
+contact = "Україна, Київ, Майдан Незалежності, 2, <br>    Spaces Maidan Plaza, 02000"
+[[params.contact]]
+title = "Phone"
+contact = "+7 495 241 07 87 (Росія)"
+link = "tel:+74952410787"
+[[params.contact]]
+title = "Phone"
+contact = "+38 044 237 13 18 (Україна)"
+link = "tel:+380442371318"
+[[params.contact]]
+title = "Email"
+contact = "info@geniusmarketing.me"
+link = "mailto:info@geniusmarketing.me"
+
+
+############################# footer #################################
+[params.footer]
+    copyright = "&copy; Genius.Space  Всі права захищені."
+
+[[menu.footer]]
+weight = 1
+name = "Головна"
+URL = "/"
+[[menu.footer]]
+weight = 2
+name = "Блог"
+URL = "/blog"
+[[menu.footer]]
+weight = 3
+name = "Про нас"
+URL = "/about"
+[[menu.footer]]
+weight = 4
+name = "Навчання"
+URL = "/learning"
+
+############################# header #################################
+[[menu.header]]
+weight = 1
+name = "Спікери"
+URL = "#voices"
+[[menu.header]]
+weight = 2
+name = "Програма"
+URL = "#program"
+[[menu.header]]
+weight = 3  
+name = "Відгуки"
+URL = "#revievs"
+[[menu.header]]
+weight = 4  
+name = "Записатись"
+URL = "/"
+
+############################# licenses #################################
+[[menu.license]]
+weight = 1
+name = "Умови надання послуг"
+URL = "/tems-services"
+[[menu.license]]
+weight = 2
+name = "Політика конфіденційності"
+URL = "/policy"
+[[menu.license]]
+weight = 3  
+name = "Умови повернення"
+URL = "/refund"
+[[menu.license]]
+weight = 4  
+name = "Умови передзамовлення послуг"
+URL = "/order-services"
+[[menu.license]]
+weight = 5 
+name = "Постачальники послуг"
+URL = "/order-services"
+[[menu.license]]
+weight = 6  
+name = "Попередження"
+URL = "/alert"

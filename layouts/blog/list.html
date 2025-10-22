@@ -1,0 +1,44 @@
+{{ define "main" }}
+{{ $lang := .Page.Lang }}
+{{ $data := index $.Site.Data }}
+
+<main class="page__wrapper">
+<div>
+    <!-- BEGIN section -->
+    {{- partial "header.html" . -}}
+    <!-- END section -->
+
+</div>
+<article class="page__single">
+  <div class="hero__single">
+    <div class="container">
+      <h1 class="text-center">{{ .Title }}</h1>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="articles">
+      {{ range $i, $el := .Data.Pages }}
+      <a class="article" href="{{ .Permalink }}">
+        <div class="article__body">
+          <div class="article__title">
+            <h2>{{ add $i 1 }}. {{ .Params.title }}</h2>
+          </div>
+          <div class="article__desc">
+            {{ .Params.exerpt | markdownify }}
+          </div>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+
+</article>
+</main>
+
+<!-- BEGIN section -->
+<!-- END section -->
+
+
+{{ end }}
+

@@ -1,0 +1,32 @@
+{{ define "main" }}
+<main class="page__wrapper">
+<div>
+    <!-- BEGIN section -->
+    {{- partial "header.html" . -}}
+    <!-- END section -->
+</div>
+<article class="page__single">
+
+    <div class="container">
+        <div class="page__container">
+            <h1 class="">
+                {{ .Title }}
+            </h1>
+            <div class="page__content">
+                {{ .Content }}
+            </div>
+
+            <a href="/blog" class="btn-back">
+                <svg class="icon" width="24" height="16">
+                    <use xlink:href="#arr-rt"></use>
+                  </svg>  Go back
+            </a>
+        </div>
+    </div>
+
+</article>
+</main>
+
+<!-- BEGIN section -->
+<!-- END section -->
+{{ end }}

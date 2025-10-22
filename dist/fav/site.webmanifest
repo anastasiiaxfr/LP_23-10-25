@@ -1,0 +1,55 @@
+{
+  "name": "Genius.Space",
+  "short_name": "Genius.Space",
+  "start_url": "/",
+  "description": "Опануйте трендовий напрямок, збільште ефективність у своїй роботі та почніть заробляти набагато більше за допомогою штучного інтелекту.",
+  "display_override": [
+    "window-control-overlay",
+    "minimal-ui"
+  ],
+  "orientation": "portrait",
+  "generated": "true",
+  "theme_color": "#8B57C2",
+  "background_color": "#121212",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/fav/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/fav/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/fav/favicon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/seo/screen1.jpg",
+      "type": "image/jpg",
+      "sizes": "720x1280",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/images/seo/screen2.jpg",
+      "type": "image/jpg",
+      "sizes": "720x1280",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/images/seo/screen3.jpg",
+      "type": "image/jpg",
+      "sizes": "720x1280",
+      "form_factor": "wide"
+    }
+  ]
+}

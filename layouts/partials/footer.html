@@ -1,0 +1,62 @@
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div>
+                {{ .Scratch.Set "logo_h" "40" }} {{ .Scratch.Set "logo_w" "96" }} {{-
+                partial "_logo.html" . -}}
+
+                <p class="footer-text">ТОВ "КОНСАЛТИНГ СИНДИКАТ", <br> ЄДРПОУ: 42182763, Адреса: 02000, <br> м. Київ,
+                    вул. Паньківська, 14.
+                </p>
+
+                <nav class="soc">
+                    {{ range .Site.Params.soc }}
+                    <a href="{{ .link }}" target="_blank" title="{{ .title }}">
+                        <svg class="icon" width="24" height="24" >
+                            <use xlink:href="#{{ .icon }}"></use>
+                        </svg>
+                    </a>
+                    {{ end }}
+                </nav>
+
+            </div>
+            <div>
+                <h4>О GeniusMarketing</h4>
+                <nav class="footer-menu">
+                    {{ range .Site.Menus.footer }}
+                    <a href="{{ .URL | absLangURL }}">{{ .Name }}</a>
+                    {{ end }}
+                </nav>
+            </div>
+            <div>
+                <h4>Контакты</h4>
+                <nav class="contacts">
+                    {{ range .Site.Params.contact }}
+                    {{ if eq .title "Address" }}
+                    <address>
+                        {{.contact | safeHTML}}
+                    </address>
+                    {{ else }}
+                    <a href="{{ .link }}" title="{{ .title }}">{{ .contact }}</a>
+                    {{ end }}
+                    {{ end }}
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="footer-btm">
+        <div class="container">
+
+            <p>{{ .Site.Params.footer.copyright | markdownify }}</p>
+
+            <nav class="footer-nav">
+                {{ range .Site.Menus.license }}
+                <a href="{{ .URL | absLangURL }}">{{ .Name }}</a>
+                {{ end }}
+            </nav>
+
+        </div>
+    </div>
+</footer>
+<!--Main Footer-->

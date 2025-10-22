@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+{{- partial "head.html" . -}}
+
+<body lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}" class="page__body">
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css" />
+
+
+  <main class="page">
+
+    {{- partial "preloader.html" . -}}
+    {{- block "main" . }}{{- end }}
+
+  </main>
+
+  {{- partial "_btn-top.html" . -}}
+  {{- partial "footer.html" . -}}
+
+<!-- Production -->
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script>
+function formatTimeHTML(ms) {
+    const totalSeconds = Math.floor(ms / 1000);
+    const days = Math.floor(totalSeconds / (24 * 3600));
+    const hours = Math.floor((totalSeconds % (24 * 3600)) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    return `<div class="timer-item"><big>${days}</big> днів</div>:
+            <div class="timer-item"><big>${hours}</big> годин</div>:
+            <div class="timer-item"><big>${minutes}</big> хвилин</div>:
+            <div class="timer-item"><big>${seconds}</big> секунд</div>`;
+}
+
+function getNumericValue(element) {
+    return parseInt(element.textContent.replace(/\D/g, ''), 10);
+}
+
+function scheduleValueIncrease(element, times, totalTime) {
+    const stepTime = totalTime / times;
+    let count = 0;
+
+    const id = setInterval(() => {
+        if (count >= times) {
+            clearInterval(id);
+            return;
+        }
+        const current = getNumericValue(element);
+        element.textContent = current + 1000; 
+        count++;
+    }, stepTime);
+
+    return id;
+}
+function startTimers() {
+    const timers = document.querySelectorAll('.timer');
+
+    timers.forEach(timer => {
+        const daysToAdd = parseFloat(timer.getAttribute('data-days'));
+        if (isNaN(daysToAdd) || daysToAdd <= 0) return;
+
+        const totalTime = daysToAdd * 24 * 60 * 60 * 1000;
+        const targetTime = Date.now() + totalTime;
+
+        const plans = [
+            document.querySelector('#standart'),
+            document.querySelector('#pro'),
+            document.querySelector('#premium')
+        ];
+
+        const increaseIntervals = plans.map(plan => plan ? scheduleValueIncrease(plan, 4, totalTime) : null);
+
+        const timerInterval = setInterval(() => {
+            const diff = targetTime - Date.now();
+
+            if (diff <= 0) {
+                timer.innerHTML = 'Час вийшов';
+                increaseIntervals.forEach(id => id ? clearInterval(id) : null);
+                clearInterval(timerInterval);
+                return;
+            }
+
+            timer.innerHTML = formatTimeHTML(diff);
+        }, 1000);
+
+        timer.innerHTML = formatTimeHTML(targetTime - Date.now());
+    });
+}
+
+document.addEventListener('DOMContentLoaded', startTimers);
+
+
+</script>
+ {{- partial "_svg.html" . -}}
+</body>
+
+</html>

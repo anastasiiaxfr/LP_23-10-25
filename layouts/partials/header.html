@@ -1,0 +1,104 @@
+<header class="header">
+	<div class="container">
+		<div class="navbar" id="navbar">
+
+
+			{{ .Scratch.Set "logo_h" "40" }} {{ .Scratch.Set "logo_w" "96" }} {{-
+			partial "_logo.html" . -}}
+
+
+			<nav class="navbar-nav">
+				{{ range .Site.Menus.header }}
+				<a class="navbar-link" href="{{ .URL | absLangURL }}">{{ .Name }}</a>
+				{{ end }}
+			</nav>
+
+
+			<div class="navbar-btns">
+				<a class="btn-bd" href="#features" data-toggle="popup"><b><span>Записатися на
+							курс</span><span>Записатися на
+							курс</span></b></a>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" title="menu">
+					<svg class="icon" width="24" height="24">
+						<use xlink:href="#menu"></use>
+					</svg>
+				</button>
+
+
+			</div>
+
+		</div>
+	</div>
+
+	<nav class="drawer">
+		<div class="drawer-container">
+
+			<div class="drawer-header">
+				{{ .Scratch.Set "logo_h" "40" }}
+				{{ .Scratch.Set "logo_w" "96" }}
+				{{ .Scratch.Set "logo_mode" "dark" }}
+				{{- partial "_logo.html" . -}}
+
+				<button class="drawer-toggler" type="button" data-toggle="collapse" data-target="#navigation" title="close">
+					<svg class="icon" width="24" height="24">
+						<use xlink:href="#close"></use>
+					</svg>
+				</button>
+			</div>
+			<div class="drawer-content">
+
+				<nav class="drawer-nav">
+					{{ range .Site.Menus.header }}
+					<a href="{{ .URL }}" target="_self">
+						{{ .Name }}
+					</a>
+					{{ end }}
+				</nav>
+
+				<a data-toggle="popup" href="#features" class="btn"><b><span>Get started</span><span>Get
+							started</span></b></a>
+
+			</div>
+
+
+		</div>
+	</nav>
+</header>
+
+<script>
+	const navToggles = document.querySelectorAll('.navbar-toggler');
+	const drawerToggles = document.querySelectorAll('.drawer-toggler');
+	const nav = document.querySelector('.drawer');
+	const links = document.querySelectorAll('.drawer-nav a');
+
+	function toggleDrawer(el) {
+		el.addEventListener('click', function (event) {
+			nav.classList.toggle('show');
+			this.classList.toggle('active');
+			event.stopPropagation();
+		});
+	}
+
+	navToggles.forEach(toggleDrawer);
+	drawerToggles.forEach(toggleDrawer);
+
+	links.forEach(function (el) {
+		el.addEventListener('click', function () {
+			nav.classList.remove('show');
+		})
+	})
+
+	document.addEventListener('click', function (event) {
+		const target = event.target;
+
+		const clickedOutsideNavToggle = !Array.from(navToggles).some(toggle => toggle.contains(target));
+
+		if (!nav.contains(target) && clickedOutsideNavToggle) {
+			nav.classList.remove('show');
+			navToggles.forEach(function (el) {
+				el.classList.remove('active');
+			});
+		}
+	});
+</script>

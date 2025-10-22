@@ -1,0 +1,160 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+
+{{ if $data.homepage.section_program }}
+{{ with $data.homepage.section_program }}
+<section class="section section--program">
+    <div class="container">
+        <div class="row_1">
+            <div>
+                <h2>
+                    {{ .title | markdownify }}
+                </h2>
+                <p>{{ .description | markdownify }}</p>
+            </div>
+            <div>
+                <div class="places">
+                    <div class="place-title">
+                        {{ .places.title }}
+                    </div>
+                    <div class="place">
+                        {{ range .places.list }}
+                        <div class="place-item">
+                            <div class="place-val">{{ .val }}</div>
+                            <div class="place-label">
+                                {{ .title }}
+                            </div>
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="accordion">
+        {{ range .program }}
+
+        <div class="accordion-item">
+            <div class="accordion-container">
+                <div class="accordion-header">
+
+                    <div>
+                        <h3 class="accordion-title">
+                            {{ .title }}
+                        </h3>
+
+                        <div class="chips">
+                            <button class="chip--bd">
+                                <svg class="icon" width="32" height="32">
+                                    <use xlink:href="#i4"></use>
+                                </svg> {{ .lessons }}
+                            </button>
+                            <button class="chip--bd">
+                                <svg class="icon" width="32" height="32">
+                                    <use xlink:href="#i5"></use>
+                                </svg> {{ .zoom }}
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="accordion-cta">
+                        <button class="accordion-btn">
+                            Більше
+                        </button>
+                        <svg class="icon" width="16" height="16">
+                            <use xlink:href="#arr-rb"></use>
+                        </svg>
+
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-body">
+                <div class="tab">
+                    <nav class="box">
+                        <h4>{{ .title_1 }}</h4>
+
+                        <ul class="tab-toggle">
+                            {{range .list}}
+                            <li><span>{{ .item | markdownify}}</span></li>
+                            {{ end }}
+                        </ul>
+                    </nav>
+                    {{range .list}}
+
+                    <div class="tab-body">
+                        <h4>Про що урок:</h4>
+                        <p><b>{{ .description }}</b></p><br>
+                        <h4 class="text--color">{{ .title_3 }}</h4>
+                        <ul class="list--mark">
+                            {{ range .features }}
+                            <li>{{ .feature }}</li>
+                            {{ end }}
+                        </ul>
+                        <a class="btn" href="#features" data-toggle="popup">
+                            <b>
+                                <span>Забронювати місце на курс</span>
+                                <span>Забронювати місце на курс</span>
+                            </b>
+                        </a>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+
+        </div>
+        {{ end }}
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const headers = document.querySelectorAll('.accordion-header');
+        const btns = document.querySelectorAll('.accordion-btn');
+
+        btns.forEach(btn => {
+            btn.textContent = 'Більше';
+        });
+
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.closest('.accordion-item');
+                const body = item.querySelector('.accordion-body');
+                const btn = item.querySelector('.accordion-btn');
+
+                const isActive = item.classList.toggle('active');
+                body.classList.toggle('visible', isActive);
+                btn.textContent = isActive ? 'Менше' : 'Більше';
+            });
+        });
+    });
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const allTabs = document.querySelectorAll('.tab');
+
+        allTabs.forEach(tab => {
+            const tabs = tab.querySelectorAll('.tab-toggle li');
+            const bodies = tab.querySelectorAll('.tab-body');
+
+            tabs.forEach((li, index) => {
+                li.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    bodies.forEach(b => b.classList.remove('visible'));
+
+                    li.classList.add('active');
+                    if (bodies[index]) {
+                        bodies[index].classList.add('visible');
+                    }
+                });
+            });
+
+            if (tabs.length && bodies.length) {
+                tabs[0].classList.add('active');
+                bodies[0].classList.add('visible');
+            }
+        });
+    });
+</script>
+{{ end }}
+{{ end }}
